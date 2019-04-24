@@ -91,7 +91,11 @@ function onSubmit(e) {
 /* Insert new table row under the clicked row
 and allow user to fill in new data using above table 
 data as values for new row. Upon submission
-replace old row with new row
+replace old row with new row.
+
+Would need to insert edit/delete buttons. Made a quick png
+of a delete button icon but decided that the time summerization
+took priority
 */
 
 //-------------------------
@@ -100,6 +104,10 @@ replace old row with new row
 
 // Target current row and delete upon button press
 
+
+//-------------------------
+// INIT
+//-------------------------
 
 function init() {
   sumTime();
