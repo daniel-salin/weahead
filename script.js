@@ -13,31 +13,24 @@ if(form.addEventListener){
     form.attachEvent('onsubmit', onSubmit);            
 }
 
-// INSERT DATA INTO TABLE
-function insertData() {
-  let table = document.querySelector("table");
-  let newRow = table.insertRow(0);
-  let projectCell = newRow.insertCell(0);
-  let activityCell = newRow.insertCell(1);
-  let fromCell = newRow.insertCell(2);
-  let toCell = newRow.insertCell(3);
-  let noteCell = newRow.insertCell(4);
-  
-  // Fill Cells with Data
-
-}
-
 // FORM DATA HANDLING CALLBACK
-function storeData() {
+function storeData(project) {
   //Form Data
   let activity = document.querySelector("select[name='activity']").value;
   let timeStart = document.querySelector("input[name='from']").value;
   let timeEnd = document.querySelector("input[name='to']").value;
   let note = document.querySelector("textarea[name='note']").value;
   let isBillable = document.querySelector("input[name='billable']").checked;
-
-  insertData();
-
+  
+  let table = document.querySelector("table");
+  let newRow = table.insertRow(1);
+  newRow.insertCell(0).innerHTML = project;
+  newRow.insertCell(1).innerHTML = activity;
+  newRow.insertCell(2).innerHTML = timeStart;
+  newRow.insertCell(3).innerHTML = timeEnd;
+  newRow.insertCell(4).innerHTML = note;
+  isBillable? newRow.insertCell(5).innerHTML = "Billable" 
+  : newRow.insertCell(5).innerHTML = "Not Billable";
 }
 
 // FORM SUBMISSION EVENT
@@ -45,7 +38,5 @@ function onSubmit(e) {
   e.preventDefault();
   let project = document.querySelector("select[name='project']").value;
   // Checking if selected project is valid
-  if(project !== "") {
-    storeData();
-  }
+  (project !== "")? storeData(project): alert("Please select a project");
 }
